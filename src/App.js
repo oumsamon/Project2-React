@@ -3,7 +3,7 @@ import Home from './Components/Home';
 import Nav from './Components/Nav';
 import Search from './Components/Search';
 import './App.css';
-import { jsxNamespacedName } from '@babel/types';
+import Breweries from './Components/Breweries';
 
 //make search bar
 //connect to API call to the search bar
@@ -48,6 +48,8 @@ const handleChange = () => {
 <Home data={data} />
 
 <Nav />
+
+<Breweries />
 
     </div>
   );
