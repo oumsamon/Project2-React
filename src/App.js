@@ -12,6 +12,12 @@ import Breweries from './Components/Breweries';
 
 function App() {
 const [ data, setData ] = useState([])
+const searchByState = {
+  api: 'https://api.openbrewerydb.org/breweries?by_state=',
+  state: 'michigan'
+}
+
+const url = `${searchByState.api}${searchByState.state}`
 
 const handleSubmit = () => {
 console.log('hello handleSubmit')
@@ -22,7 +28,7 @@ const handleChange = () => {
 }
 
   useEffect(() => {
-    const url = 'https://api.openbrewerydb.org/breweries?by_state=michigan'
+    // const url = 'https://api.openbrewerydb.org/breweries?by_state=michigan'
   fetch(url)
   .then(res => res.json())
   .then(res => {
