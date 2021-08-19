@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Route, Link } from 'react-router-dom';
 import Home from './Components/Home';
 import Nav from './Components/Nav';
 import Search from './Components/Search';
@@ -6,7 +7,7 @@ import './App.css';
 import Breweries from './Components/Breweries';
 
 //make search bar
-//connect to API call to the search bar
+//connect to API call to the search bar - i already have it stored.  search only need to be referr from the app js useState
 //Render data on screen - task completed with {}
 //search by city and name
 //make Links and Route
@@ -15,7 +16,7 @@ import Breweries from './Components/Breweries';
 
 function App() {
 //empty array
-const [ data, setData ] = useState({})
+const [ data, setData ] = useState([])
 
 const handleSubmit = () => {
 console.log('hello handleSubmit')
@@ -25,32 +26,29 @@ const handleChange = () => {
   console.log('world handleChange')
 }
 
-
   useEffect(() => {
-    const url = 'https://api.openbrewerydb.org/breweries?by_state=ohio'
+    const url = 'https://api.openbrewerydb.org/breweries?by_state=michigan'
   fetch(url)
   .then(res => res.json())
   .then(res => {
-    // console.log('what is happen?', res)
+    console.log('what is happen?', res)
     setData(res)
-    // console.log('data info here', data)
+    console.log('data info here', data)
   })
-
 },[])
-
-
 
   return (
     <div className="App">
+        <header>
+          <Search handleSubmit={handleSubmit} handleChange={handleChange} />       
+          <Nav />
+        </header>
 
-<Search handleSubmit={handleSubmit} handleChange={handleChange} />
-
-<Home data={data} />
-
-<Nav />
-
-<Breweries />
-
+        <main>
+{/* what you have to set data thru a route, you have to write it as a function to pass the data in. */}
+          <Route exact path="/" component={() => <Home data={data} /> } />
+          <Route exact path="/details/:id" component={routerProps => <Breweries match={routerProps.match.params} data={data} {...console.log(routerProps)}/>}  />
+        </main>
     </div>
   );
 }
