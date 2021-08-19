@@ -6,16 +6,11 @@ import Search from './Components/Search';
 import './App.css';
 import Breweries from './Components/Breweries';
 
-//make search bar
-//connect to API call to the search bar - i already have it stored.  search only need to be referr from the app js useState
-//Render data on screen - task completed with {}
 //search by city and name
 //make Links and Route
 //Make beweries clickable - onCLick
 
-
 function App() {
-//empty array
 const [ data, setData ] = useState([])
 
 const handleSubmit = () => {
@@ -31,9 +26,9 @@ const handleChange = () => {
   fetch(url)
   .then(res => res.json())
   .then(res => {
-    console.log('what is happen?', res)
+    // console.log('what is happen?', res)
     setData(res)
-    console.log('data info here', data)
+    // console.log('data info here', data)
   })
 },[])
 
@@ -43,9 +38,8 @@ const handleChange = () => {
           <Search handleSubmit={handleSubmit} handleChange={handleChange} />       
           <Nav />
         </header>
-
         <main>
-{/* what you have to set data thru a route, you have to write it as a function to pass the data in. */}
+            {/* what you have to set data thru a route, you have to write it as a function to pass the data in. */}
           <Route exact path="/" component={() => <Home data={data} /> } />
           <Route exact path="/details/:id" component={routerProps => <Breweries match={routerProps.match.params} data={data} {...console.log(routerProps)}/>}  />
         </main>
