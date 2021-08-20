@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Link } from 'react-router-dom';
-import Home from './Components/Home';
-import Nav from './Components/Nav';
-import Search from './Components/Search';
 import './App.css';
+import Home from './Components/Home';
+import Search from './Components/Search';
 import Breweries from './Components/Breweries';
 import BeerHomePage from './Components/Images/beer-homepage.jpg';
 
