@@ -2,15 +2,16 @@ import React from 'react';
 
 function Search({ handleSubmit, handleChange}) {
     return (
-        <div>
+        <div className='searchBar'>
             <form id="item-review" 
 onSubmit={handleSubmit}>
 
   <label For="searchState">Select State:</label>
   <select id="searchState">
+  <option value="michigan">Michigan</option>
     <option value="ohio">Ohio</option>
     <option value="indiana">Indiana</option>
-    <option value="michigan">Michigan</option>
+    
   </select>
 
   <label For="breweryName">Search by Brewery</label>

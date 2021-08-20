@@ -5,6 +5,7 @@ import Nav from './Components/Nav';
 import Search from './Components/Search';
 import './App.css';
 import Breweries from './Components/Breweries';
+import BeerHomePage from './Components/Images/beer-homepage.jpg';
 
 //search by city and name
 //make Links and Route
@@ -18,6 +19,18 @@ const searchByState = {
 }
 
 const url = `${searchByState.api}${searchByState.state}`
+const initialState = searchByState
+
+const [searchState, setSearchState] = useState(initialState);
+
+const changeStateSearch = (index, changeStateTo) => {
+  const newState = [...searchState];
+  if (changeStateTo === 'michigan') {
+    // searchByState.state ==="index";
+  } else {
+    searchByState.state = 'michigan'
+  }
+} 
 
 const handleSubmit = () => {
 console.log('hello handleSubmit')
@@ -28,7 +41,6 @@ const handleChange = () => {
 }
 
   useEffect(() => {
-    // const url = 'https://api.openbrewerydb.org/breweries?by_state=michigan'
   fetch(url)
   .then(res => res.json())
   .then(res => {
@@ -40,8 +52,10 @@ const handleChange = () => {
 
   return (
     <div className="App">
+      {/* <img className='beerHomepage' src={BeerHomePage} alt='Welcome to Beer N Brewery'/> */}
+      <div className='backgroundImage' style={{ backgroundImage: `url(${BeerHomePage})` }}>
         <header>
-          <Search handleSubmit={handleSubmit} handleChange={handleChange} />       
+          <Search handleSubmit={handleSubmit} handleChange={handleChange} changeStateSearch={changeStateSearch} />       
           <Nav />
         </header>
         <main>
@@ -49,6 +63,7 @@ const handleChange = () => {
           <Route exact path="/" component={() => <Home data={data} /> } />
           <Route exact path="/details/:id" component={routerProps => <Breweries match={routerProps.match.params} data={data} {...console.log(routerProps)}/>}  />
         </main>
+        </div>
     </div>
   );
 }
