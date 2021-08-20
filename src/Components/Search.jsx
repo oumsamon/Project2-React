@@ -1,26 +1,23 @@
 import React from 'react';
 
-function Search({ handleSubmit, handleChange}) {
+function Search({ handleSubmit, handleChange }) {
     return (
         <div className='searchBar'>
-            <form id="item-review" 
-onSubmit={handleSubmit}>
+            <form id="item-review" onSubmit={handleSubmit}>
 
-  <label For="searchState">Select State:</label>
-  <select id="searchState">
-  <option value="michigan">Michigan</option>
+  <label For="searchState"><h4>Select State:</h4></label>
+
+  <select onChange={handleChange} id="searchState">
+  <option  value="michigan">Michigan</option>
     <option value="ohio">Ohio</option>
     <option value="indiana">Indiana</option>
-    
-  </select>
+    </select>
+  <button onClick={handleSubmit} type="submit">Send</button>
 
-  <label For="breweryName">Search by Brewery</label>
-  <input type="text" id="breweryName" />
+  <label For="cityName"><h4>Search by City</h4></label>
+  <input type="text" id="cityName" onChange={handleChange} />
 
-  <label For="cityName">Search by City</label>
-  <input type="text" id="cityName" />
-
-  <button type="submit">Send</button>
+  <button onClick={handleSubmit} type="submit">Send</button>
 
 </form>
         </div>

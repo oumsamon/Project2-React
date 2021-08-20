@@ -10,7 +10,7 @@ function Breweries({ match, data }) {
   //  console.log(data[4].id, match.id, parseInt(match.id))
 
   if (breweryState) {
-    console.log("brewwryState", breweryState);
+    // console.log("brewwryState", breweryState);
 
     return (
       <section className="details-container">

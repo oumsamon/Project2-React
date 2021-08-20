@@ -13,55 +13,67 @@ import BeerHomePage from './Components/Images/beer-homepage.jpg';
 
 function App() {
 const [ data, setData ] = useState([])
-const searchByState = {
-  api: 'https://api.openbrewerydb.org/breweries?by_state=',
-  state: 'michigan'
-}
 
-const url = `${searchByState.api}${searchByState.state}`
-const initialState = searchByState
+const initialState = ''
 
 const [searchState, setSearchState] = useState(initialState);
+const url = `https://api.openbrewerydb.org/breweries?by_state=${searchState}`
 
-const changeStateSearch = (index, changeStateTo) => {
-  const newState = [...searchState];
-  if (changeStateTo === 'michigan') {
-    // searchByState.state ==="index";
-  } else {
-    searchByState.state = 'michigan'
-  }
-} 
+// const changeStateSearch = (changeStateTo) => {
+//   const newState = [...searchState];
+//   if (changeStateTo === 'michigan') {
+//     // searchByState.state ==="index";
+//   } else {
+//     searchState = 'michigan'
+//   }
+// } 
 
-const handleSubmit = () => {
-console.log('hello handleSubmit')
+
+
+const handleSubmit = (event) => {
+  event.preventDefault()
+  getUrl(searchState)
+  setSearchState(initialState)
+
+console.log('hello handleSubmit', searchState)
 }
-
-const handleChange = () => {
-  console.log('world handleChange')
+const handleChange = (event) => {
+  setSearchState(event.target.value)
+  console.log('handleChange', searchState)
 }
+console.log(searchState, 'outside the function')
 
-  useEffect(() => {
+console.log(url, "url")
+
+function getUrl() {
   fetch(url)
   .then(res => res.json())
   .then(res => {
-    // console.log('what is happen?', res)
+    console.log('what is happen?', res)
     setData(res)
-    // console.log('data info here', data)
+    console.log('data info here', data)
   })
+}
+
+useEffect(() => {
+  getUrl(searchState)
 },[])
+
+ console.log(data, 'data in useEffect')
 
   return (
     <div className="App">
       {/* <img className='beerHomepage' src={BeerHomePage} alt='Welcome to Beer N Brewery'/> */}
       <div className='backgroundImage' style={{ backgroundImage: `url(${BeerHomePage})` }}>
         <header>
-          <Search handleSubmit={handleSubmit} handleChange={handleChange} changeStateSearch={changeStateSearch} />       
-          <Nav />
+          <Search handleSubmit={handleSubmit} handleChange={handleChange} />       
+       
         </header>
         <main>
             {/* what you have to set data thru a route, you have to write it as a function to pass the data in. */}
           <Route exact path="/" component={() => <Home data={data} /> } />
-          <Route exact path="/details/:id" component={routerProps => <Breweries match={routerProps.match.params} data={data} {...console.log(routerProps)}/>}  />
+
+          <Route exact path="/details/:id" component={routerProps => <Breweries match={routerProps.match.params} data={data} />}  />
         </main>
         </div>
     </div>
