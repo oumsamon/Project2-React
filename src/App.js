@@ -7,36 +7,21 @@ import './App.css';
 import Breweries from './Components/Breweries';
 import BeerHomePage from './Components/Images/beer-homepage.jpg';
 
-//search by city and name
 //make Links and Route
-//Make beweries clickable - onCLick
 
 function App() {
 const [ data, setData ] = useState([])
-
 const initialState = ''
-
 const [searchState, setSearchState] = useState(initialState);
 const url = `https://api.openbrewerydb.org/breweries?by_state=${searchState}`
-
-// const changeStateSearch = (changeStateTo) => {
-//   const newState = [...searchState];
-//   if (changeStateTo === 'michigan') {
-//     // searchByState.state ==="index";
-//   } else {
-//     searchState = 'michigan'
-//   }
-// } 
-
-
 
 const handleSubmit = (event) => {
   event.preventDefault()
   getUrl(searchState)
   setSearchState(initialState)
-
 console.log('hello handleSubmit', searchState)
 }
+
 const handleChange = (event) => {
   setSearchState(event.target.value)
   console.log('handleChange', searchState)
@@ -59,7 +44,7 @@ useEffect(() => {
   getUrl(searchState)
 },[])
 
- console.log(data, 'data in useEffect')
+//  console.log(data, 'data in useEffect')
 
   return (
     <div className="App">
@@ -67,7 +52,7 @@ useEffect(() => {
       <div className='backgroundImage' style={{ backgroundImage: `url(${BeerHomePage})` }}>
         <header>
           <Search handleSubmit={handleSubmit} handleChange={handleChange} />       
-       
+      
         </header>
         <main>
             {/* what you have to set data thru a route, you have to write it as a function to pass the data in. */}
