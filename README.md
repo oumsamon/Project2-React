@@ -9,6 +9,8 @@ This react project was created with the love of craft beer and beer in general. 
 ## Technologies used:
 React | CSS | Javascripts | VS code
 
+Find your beer [here](beerNbreweries.surge.sh)
+
 API: https://api.openbrewerydb.org/breweries
 Offical API website: https://www.openbrewerydb.org/
 
