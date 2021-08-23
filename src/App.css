@@ -1,5 +1,12 @@
+
+
 .App {
   text-align: center;
+  min-height: 100vh;
+
+  background: no-repeat center center fixed;
+  background-size: cover;
+  
 }
 
 .searchBar {
@@ -7,21 +14,6 @@
   color: #041524;
   margin: 0;
   padding: 20px;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.backgroundImage {
-  /* text-align: center;
-  margin: 0;
-  padding: 0; */
-  background: no-repeat center center fixed;
-  background-size: cover;
-  /* height: auto; */
 }
 
 h2 {

@@ -12,46 +12,57 @@ function App() {
 const [ data, setData ] = useState([])
 const initialState = ''
 const [searchState, setSearchState] = useState(initialState);
-const url = `https://api.openbrewerydb.org/breweries?by_state=${searchState}`
+const [searchCity, setSearchCity ] = useState(initialState)
+const urlState = `https://api.openbrewerydb.org/breweries?by_state=${searchState}`
+const urlCity = `https://api.openbrewerydb.org/breweries?by_city=${searchCity}`
+
+function getUrl() {
+  fetch(urlState)
+  .then(res => res.json())
+  .then(res => {
+    setData(res)
+  })
+}
+
+function getCity() {
+  fetch(urlCity)
+  .then(res => res.json())
+  .then(res => {
+    setData(res)
+  })
+}
 
 const handleSubmit = (event) => {
   event.preventDefault()
   getUrl(searchState)
   setSearchState(initialState)
-console.log('hello handleSubmit', searchState)
 }
 
 const handleChange = (event) => {
   setSearchState(event.target.value)
-  console.log('handleChange', searchState)
 }
-console.log(searchState, 'outside the function')
 
-console.log(url, "url")
+const handleSubmitCity = (event) => {
+  event.preventDefault()
+  getCity(searchCity)
+  setSearchCity(initialState)
+}
 
-function getUrl() {
-  fetch(url)
-  .then(res => res.json())
-  .then(res => {
-    console.log('what is happen?', res)
-    setData(res)
-    console.log('data info here', data)
-  })
+const handleChangeCity = (event) => {
+  setSearchCity(event.target.value)
 }
 
 useEffect(() => {
   getUrl(searchState)
+  getCity(searchCity)
 },[])
 
-//  console.log(data, 'data in useEffect')
-
   return (
-    <div className="App">
-
-      <div className='backgroundImage' style={{ backgroundImage: `url(${BeerHomePage})` }}>
+    <div className="App" style={{ backgroundImage: `url(${BeerHomePage})` }}>
+      <div>
         <header>
          
-          <Search handleSubmit={handleSubmit} handleChange={handleChange} />       
+          <Search handleSubmit={handleSubmit} handleChange={handleChange} handleChangeCity={handleChangeCity} handleSubmitCity={handleSubmitCity} />       
       
         </header>
         <main>

@@ -33,7 +33,9 @@ function Home({ data }) {
   } else {
     return (
       <div>
-        <h4>Loading.....</h4>
+        <h4 style= {
+          {color: "white"}
+        }>No City Found...please try again, check your spelling</h4>
       </div>
     );
   }

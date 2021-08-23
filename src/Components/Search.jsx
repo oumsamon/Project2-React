@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Search({ handleSubmit, handleChange }) {
+function Search({ handleSubmit, handleChange, handleChangeCity, handleSubmitCity }) {
     return (
         <div className='searchBar'>
             <form id="item-review" onSubmit={handleSubmit}>
@@ -47,7 +47,7 @@ function Search({ handleSubmit, handleChange }) {
     <option value="oklahoma">Oklahoma</option>
     <option value="oregon">Oregon</option>
     <option value="pennsylvania">Pennsylvania</option>
-    <option value="rhode island">Rhode Island</option>
+    <option value="rhode_island">Rhode Island</option>
     <option value="south_carolina">South Carolina</option>
     <option value="south_dakota">South Dakota</option>
     <option value="tennessee">Tennessee</option>
@@ -60,12 +60,14 @@ function Search({ handleSubmit, handleChange }) {
     <option value="wisconsin">Wisconsin</option>
     <option value="wyoming">Wyoming</option>
     </select>
-  <button onClick={handleSubmit} type="submit">Search</button>
+  <input onClick={handleSubmit} type="submit" value="Search by State" />
+</form>
 
+<form onSubmit={handleSubmitCity}>
   <label For="cityName"><h4>Search by City</h4></label>
-  <input type="text" id="cityName" onChange={handleChange} />
+  <input type="text" id="cityName" onSubmit={handleSubmitCity} onChange={handleChangeCity} />
 
-  <button onClick={handleSubmit} type="submit">Send</button>
+  <input onSubmit={handleSubmitCity} type="submit" value="Search by City" />
 
 </form>
         </div>
