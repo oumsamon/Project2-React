@@ -47,19 +47,22 @@ useEffect(() => {
 
   return (
     <div className="App">
-      {/* <img className='beerHomepage' src={BeerHomePage} alt='Welcome to Beer N Brewery'/> */}
+
       <div className='backgroundImage' style={{ backgroundImage: `url(${BeerHomePage})` }}>
         <header>
+         
           <Search handleSubmit={handleSubmit} handleChange={handleChange} />       
       
         </header>
         <main>
-            {/* what you have to set data thru a route, you have to write it as a function to pass the data in. */}
+       
           <Route exact path="/" component={() => <Home data={data} /> } />
+         
 
           <Route exact path="/details/:id" component={routerProps => <Breweries match={routerProps.match.params} data={data} />}  />
         </main>
         </div>
+
     </div>
   );
 }
