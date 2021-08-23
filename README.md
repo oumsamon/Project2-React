@@ -14,7 +14,7 @@ Offical API website: https://www.openbrewerydb.org/
 
 
  ## Getting Started/Installation Instructions: 
-Only breweries in the USA are being render on screen.
+Only breweries in the USA are being render on screen currently.
 
 To search by State, please use the drop down menu.
 

@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-
+import React from "react";
+import Search from "./Search";
 
 function Breweries({ match, data }) {
   const breweryState = data.filter((breweryName) => {
@@ -7,7 +7,6 @@ function Breweries({ match, data }) {
   });
 
   if (breweryState) {
-
     return (
       <section className="details-container">
         <div className="card">
@@ -19,10 +18,11 @@ function Breweries({ match, data }) {
             <h3>{breweryState[0].street}</h3>
             <h3>
               {" "}
-              {breweryState[0].city}, {breweryState[0].state}
+              {breweryState[0].city}, {breweryState[0].state} {breweryState[0].postal_code}
             </h3>
             <h3>{breweryState[0].country}</h3>
-            <a href={breweryState[0].webpage_url} target="_blank" rel="noopener noreferrer">
+            <h2>{breweryState[0].website_url} </h2>
+            <a href={breweryState[0].website_url} target="_blank" rel="noopener noreferrer">
               Read More
             </a>
           </div>
