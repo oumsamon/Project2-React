@@ -65,6 +65,7 @@ useEffect(() => {
           <Search handleSubmit={handleSubmit} handleChange={handleChange} handleChangeCity={handleChangeCity} handleSubmitCity={handleSubmitCity} />       
       
         </header>
+        
         <main>
        
           <Route exact path="/" component={() => <Home data={data} /> } />

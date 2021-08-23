@@ -1,11 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
+
 
 function Search({ handleSubmit, handleChange, handleChangeCity, handleSubmitCity }) {
     return (
+      <div>
         <div className='searchBar'>
             <form id="item-review" onSubmit={handleSubmit}>
 
-  <label For="searchState"><h4>Select State:</h4></label>
+  <label For="searchState"><h4>Search by State:</h4></label>
 
   <select onChange={handleChange} id="searchState">
     <option value="">Select a State</option>
@@ -70,6 +73,11 @@ function Search({ handleSubmit, handleChange, handleChangeCity, handleSubmitCity
   <input onSubmit={handleSubmitCity} type="submit" value="Search by City" />
 
 </form>
+</div>
+<Link to="/" style={
+  {color: "white"}
+}><h2>Go back Home</h2></Link>
+
         </div>
     );
 }

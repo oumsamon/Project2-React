@@ -2,8 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function Home({ data }) {
-  // console.log("data in home", data);
-  // console.log(data.length);
   if (data.length) {
     return (
       <section className="container">
@@ -14,7 +12,7 @@ function Home({ data }) {
                 <Link to={`/details/${brewery.id}`}>
                   <div className="beerco">
                     <h2>{brewery.name} </h2>
-                    <h3>Type of Brewery: {brewery.brewery_type}</h3>
+                    <h3>Type: {brewery.brewery_type}</h3>
                   </div>
                   <div className="card-title">
                     <h3>
@@ -35,7 +33,7 @@ function Home({ data }) {
       <div>
         <h4 style= {
           {color: "white"}
-        }>No City Found...please try again, check your spelling</h4>
+        }>No City Found...please go back and try again.</h4>
       </div>
     );
   }
